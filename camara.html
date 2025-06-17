@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guia Definitiva BTD</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <link rel="stylesheet" href="camara.css" />
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sceneEl = document.querySelector("a-scene");
+
+        const targets = document.querySelectorAll("[mindar-image-target]");
+        targets.forEach((target, index) => {
+          target.addEventListener("targetFound", function () {
+            console.log(`¡Target ${index + 1} encontrado!`);
+            setTimeout(() => {
+              window.location.href = `informacionMoneril.html?target=${
+                index + 1
+              }`;
+            }, 100);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">ESCANEA UNA TORRE MONERIL</h1>
+      </div>
+    </div>
+
+    <a-scene
+      mindar-image="imageTargetSrc: https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/targetsBTD.mind?v=1731378356617;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-assets>
+        <img
+          id="card"
+          src="https://cdn.glitch.global/f5cc5bfb-d534-4812-830a-cea9f31e14a6/ad29d4f7-980a-4487-9f3c-1c5de3b496f9.image.png?v=1725384033529"
+          crossorigin="anonymous"
+        />
+        <a-asset-item
+          id="avatarModel"
+          src="https://cdn.glitch.global/f5cc5bfb-d534-4812-830a-cea9f31e14a6/low_poly_etienne_bloons_td6"
+          crossorigin="anonymous"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: true"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 1"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 2"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 3"></a-entity>
+      <a-entity mindar-image-target="targetIndex: 4"></a-entity>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,200 @@
+model-viewer {
+  width: 100%;
+  height: 600px;
+}
+
+a-scene {
+  height: 100vh;
+}
+
+
+#showTextButton {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 50px; 
+  height: 50px;
+  background-image: url("https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/b181f328-2029-4782-9521-feae678fd9b7.image.png?v=1731377234337"); /* Reemplaza con la ruta de tu imagen */
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+#textModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); 
+  background-image: url("https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/MARCOBTD6.png?v=1731022193248"); /* Imagen de fondo */
+  background-size: cover; 
+  background-position: center; 
+  z-index: 1000;
+  width: 400px;
+  text-align: center;
+  font-family: "Luckiest Guy", sans-serif; 
+}
+
+
+#modalContent {
+  font-family: "Luckiest Guy", sans-serif; 
+  color: #ffffff; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+
+#closeButton {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 35px 45px; 
+  font-size: 16px;
+  background-image: url("https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/ef0face5-9986-43b6-bdd4-b208f053f76b.image.png?v=1731377608614");
+  background-size: 110%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/f280ca20-3944-45df-ae9d-5ccd8dc042d1.image.png?v=1731019087882"); /* Cambia esta URL por la de tu imagen de fondo */
+  background-size: 200vw 100vh; 
+  background-position: 0 0;
+  background-repeat: repeat-x; 
+  color: #ffffff;
+  font-family: "Luckiest Guy", sans-serif; 
+  margin: 0;
+  height: 100vh;
+  overflow: hidden; 
+  animation: moveBackground 20s linear infinite; 
+}
+
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100vw 0; 
+  }
+}
+
+/* Contenedor del modelo */
+#viewer-container {
+  width: 100%;
+  max-width: 500px;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.info-container {
+  position: relative;
+  max-width: 80%;
+  color: #ffffff;
+  font-size: 2.5em;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+
+.info-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: 400px; 
+  height: 83px; 
+  background-image: url("https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/MARCOBTD6.png?v=1731022193248"); 
+  background-size: 400px 83px; 
+  background-repeat: no-repeat;
+  opacity: 1;
+  z-index: -1;
+}
+
+
+.subtitle-container {
+  position: relative;
+  max-width: 100%; 
+  color: #cccccc;
+  font-size: 1em;
+  text-align: center;
+  line-height: 1.5;
+  white-space: pre-line;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+  margin-bottom: 10px;
+  z-index: 1;
+  padding: 10px 0; 
+}
+
+
+.subtitle-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 125%; 
+  background-image: url("https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/MARCOBTD6.png?v=1731022193248");
+  background-size: 100% 125px; 
+  background-repeat: no-repeat;
+  opacity: 1;
+  z-index: -1; 
+}
+
+
+@media (max-width: 600px) {
+  
+  .info-container {
+    font-size: 1.5em; 
+    margin-top: 10px; 
+    margin-bottom: 25px; 
+    padding: 0 15px; 
+  }
+
+  
+  .subtitle-container {
+    font-size: 0.9em; 
+    margin-top: 5px; 
+    margin-bottom: 10px; 
+    padding: 10px;
+    background-size: cover; 
+    background-position: center;
+  }
+
+  
+  .info-container::before {
+    width: 100%; 
+    background-size: 100% 83px;
+  }
+
+
+  #viewer-container {
+    max-width: 80%; 
+  }
+}

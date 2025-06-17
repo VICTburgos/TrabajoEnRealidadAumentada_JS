@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modelo 3D de Torre Moneril</title>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <link rel="stylesheet" href="informacionMoneril.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <button id="showTextButton"></button>
+
+    <div id="textModal">
+      <p id="modalContent">
+        Este es el cuadro de texto que aparece en el centro de la pantalla.
+      </p>
+      <button id="closeButton"></button>
+    </div>
+
+    <div id="viewer-container"></div>
+
+    <div id="info" class="info-container"></div>
+
+    <div id="subtitle" class="subtitle-container"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Función para obtener el valor del parámetro "target" de la URL
+        function getQueryParam(param) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+        }
+
+        // Lógica para mostrar el modelo 3D e información específica según el "target"
+        const target = getQueryParam("target");
+        const infoElement = document.getElementById("info");
+        const subtitleElement = document.getElementById("subtitle");
+        const viewerContainer = document.getElementById("viewer-container");
+        const modalContent = document.getElementById("modalContent");
+
+        // Crear el elemento model-viewer
+        const modelViewer = document.createElement("model-viewer");
+        modelViewer.setAttribute("auto-rotate", "");
+        modelViewer.setAttribute("camera-controls", "");
+
+        // Switch
+        switch (target) {
+          case "1":
+            modelViewer.setAttribute(
+              "src",
+              "https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/DartMonkey.glb?v=1731367846996"
+            );
+            infoElement.textContent = "MONO LANZADARDOS.";
+            subtitleElement.textContent =
+              "DAÑO: 1\nPENETRACION: 2\nVELOCIDAD: 1s\nALCANCE: 32 casillas";
+            modalContent.textContent =
+              "El primer mono desbloqueable, dispara dardos que dañan a los bloons.";
+
+            break;
+          case "2":
+            modelViewer.setAttribute(
+              "src",
+              "https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/low_poly_tack_shooter_btd6.gltf?v=1731367782639"
+            );
+            infoElement.textContent = "Tiratachuelas.";
+            subtitleElement.textContent =
+              "DAÑO: 1\nPENETRACION: 1\nVELOCIDAD: 1.4s\nALCANCE: 23 casillas";
+            modalContent.textContent =
+              "Dispara una volea de clavos de corto alcance en 8 direcciones.";
+            break;
+          case "3":
+            modelViewer.setAttribute(
+              "src",
+              "https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/PC%20Computer%20-%20Bloons%20TD%206%20-%20Bomb%20Shooter.gltf?v=1731367781525"
+            );
+            infoElement.textContent = "Cañón.";
+            subtitleElement.textContent =
+              "DAÑO: 1\nPENETRACION: 12\nVELOCIDAD: 1.5s\nALCANCE: 40 casillas";
+            modalContent.textContent =
+              "Lanza una bomba que hace mucho daño y puede dañar bloons emplomados, su disparo es lento pero la explosión afecta una gran área, no explota bloons negros.";
+            break;
+          case "4":
+            modelViewer.setAttribute(
+              "src",
+              "https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/pat_fusty.gltf?v=1731368162522"
+            );
+            infoElement.textContent = "Pat Fusty.";
+            subtitleElement.textContent =
+              "DAÑO: 3\nPENETRACION: 10\nVELOCIDAD: 1.1s\nALCANCE: 24 casillas";
+            modalContent.textContent =
+              "Un gran mono que mejora a las torres dentro de su rango y pega bofetadas a los bloons, puede aplastar bloons de clase MOAB.";
+            break;
+          case "5":
+            modelViewer.setAttribute(
+              "src",
+              "https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/apex_plasma_master.gltf?v=1731368616163"
+            );
+            infoElement.textContent = "Maestro de Plasma.";
+            subtitleElement.textContent =
+              "DAÑO: 15\nPENETRACION: 200\nVELOCIDAD: 0.4s\nALCANCE: 85 casillas";
+            modalContent.textContent =
+              "La cúspide de la ciencia moneril, dispara grandes bolas de plasma que hacen daño masivo en área.";
+            break;
+          default:
+            modelViewer.setAttribute(
+              "src",
+              "https://cdn.glitch.global/6d6bb9fe-e8ea-4554-8a46-80451885290b/DartMonkeyDefault.gltf?v=1729619324616"
+            );
+            infoElement.textContent = "Modelo predeterminado";
+            subtitleElement.textContent = "Sin información específica.";
+            modalContent.textContent =
+              "Este es el modelo predeterminado sin información específica.";
+            break;
+        }
+
+        viewerContainer.appendChild(modelViewer);
+
+        const showTextButton = document.getElementById("showTextButton");
+        const textModal = document.getElementById("textModal");
+        const closeButton = document.getElementById("closeButton");
+
+        showTextButton.addEventListener("click", function () {
+          textModal.style.display = "block";
+        });
+
+        closeButton.addEventListener("click", function () {
+          textModal.style.display = "none";
+        });
+      });
+    </script>
+  </body>
+</html>
