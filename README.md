@@ -1,3 +1,2 @@
-LINK DE LA PAGINA:
-https://sepia-nebulous-peace.glitch.me/
-Escanear las siguientes imagenes:
+LINK DE GUIA:
+https://docs.google.com/document/d/1DLalHD10LEHVP4abajdlBjJk7vjuLiZtDOhQSAABHNI/edit?usp=sharing
